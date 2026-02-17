@@ -98,13 +98,13 @@ export function Hero() {
       </motion.div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center ">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center  ">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 mt-8 mb-"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 lg:mt-8 mt-16 "
         >
           <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
           <span className="text-[#D4AF37] text-sm font-medium tracking-wide">
@@ -117,7 +117,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-6"
+          className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white lg:leading-tight mb-6 "
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
           We Build

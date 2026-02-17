@@ -48,10 +48,10 @@ const values = [
 ]
 
 const stats = [
-  { value: '150+', label: 'Projects Completed' },
-  { value: '50+', label: 'Team Members' },
-  { value: '15+', label: 'Years Experience' },
-  { value: '98%', label: 'Client Satisfaction' },
+  { value: '30+', label: 'Projects Completed' },
+  { value: '4+', label: 'Team Members' },
+  { value: '5+', label: 'Years Experience' },
+  { value: '99%', label: 'Client Satisfaction' },
 ]
 
 const team = [
@@ -91,14 +91,14 @@ function AboutPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-50"
+        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a]"
       >
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
             About Our Agency
           </motion.h1>
@@ -106,7 +106,7 @@ function AboutPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-xl text-gray-600 mb-8"
+            className="text-xl text-[#FFFFFF80] mb-8"
           >
             We're a team of passionate professionals dedicated to transforming
             ideas into digital excellence.
@@ -115,7 +115,7 @@ function AboutPage() {
       </motion.section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {stats.map((stat, index) => (
@@ -124,12 +124,12 @@ function AboutPage() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg"
+                className="text-center p-6 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a] rounded-lg border border-[#D4AF37]/30"
               >
-                <div className="text-3xl md:text-4xl font-bold text-indigo-600 mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-[#D4AF37] mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sm md:text-base text-gray-600">
+                <div className="text-sm md:text-base text-[#FFFFFF80]">
                   {stat.label}
                 </div>
               </motion.div>
@@ -139,19 +139,19 @@ function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a]">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#D4AF37] mb-8">
               Our Story
             </h2>
-            <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+            <div className="space-y-6 text-[#FFFFFF80] leading-relaxed text-lg">
               <p>
-                Founded in 2009, our agency emerged from a simple belief:
+                Founded in 2021, our agency emerged from a simple belief:
                 technology should solve real problems and create meaningful
                 impact. What started as a small team of developers has grown
                 into a multidisciplinary powerhouse of designers, developers,
@@ -159,7 +159,7 @@ function AboutPage() {
               </p>
               <p>
                 Over the years, we've had the privilege of working with startups
-                and Fortune 500 companies alike. Each project has taught us
+                and Fortune 20 companies alike. Each project has taught us
                 something new, shaped our approach, and strengthened our
                 commitment to excellence. We've learned that the best solutions
                 come from deep understanding, bold creativity, and technical
@@ -177,12 +177,12 @@ function AboutPage() {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center"
+            className="text-3xl sm:text-4xl font-bold text-[#D4AF37] mb-12 text-center"
           >
             Our Core Values
           </motion.h2>
@@ -195,13 +195,13 @@ function AboutPage() {
                   initial={{ y: 20, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:shadow-lg transition-shadow"
+                  className="p-6 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a] rounded-lg border border-[#D4AF37]/30 hover:border-[#D4AF37]/60 transition-all"
                 >
-                  <Icon className="w-12 h-12 text-indigo-600 mb-4" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <Icon className="w-12 h-12 text-[#D4AF37] mb-4" />
+                  <h3 className="text-xl font-bold text-white mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-gray-600">{value.description}</p>
+                  <p className="text-[#FFFFFF80]">{value.description}</p>
                 </motion.div>
               )
             })}
@@ -210,12 +210,12 @@ function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center"
+            className="text-3xl sm:text-4xl font-bold text-[#D4AF37] mb-12 text-center"
           >
             Meet Our Leadership
           </motion.h2>
@@ -226,18 +226,16 @@ function AboutPage() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center"
+                className="text-center p-6 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a] rounded-lg border border-[#D4AF37]/30"
               >
-                <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full flex items-center justify-center text-6xl">
+                <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-b from-[#0B0B0B] to-[#1a1a1a] rounded-full flex items-center justify-center text-6xl border border-[#D4AF37]/30">
                   {member.image}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-1">
+                <h3 className="text-xl font-bold text-white mb-1">
                   {member.name}
                 </h3>
-                <p className="text-indigo-600 font-medium mb-2">
-                  {member.role}
-                </p>
-                <p className="text-gray-600 text-sm">{member.bio}</p>
+                <p className="text-[#D4AF37] font-medium mb-2">{member.role}</p>
+                <p className="text-[#FFFFFF80] text-sm">{member.bio}</p>
               </motion.div>
             ))}
           </div>

@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { Link, useLocation } from '@tanstack/react-router'
-import main from "/mainlogo.svg";
+import main from '/mainlogo.svg'
 
 const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/services' },
-  { name: 'About', href: '/#about' },
-  { name: 'Portfolio', href: '/#portfolio' },
+  { name: 'About', href: '/about' },
+  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Price', href: '/price' },
   { name: 'Testimonials', href: '/#testimonials' },
   { name: 'Contact', href: '/#contact' },
 ]
@@ -64,8 +65,10 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) =>
-                link.href.startsWith('/#') ? (
+              {navLinks.map((link) => {
+                const isActive =
+                  !link.href.startsWith('/#') && location.pathname === link.href
+                return link.href.startsWith('/#') ? (
                   <button
                     key={link.name}
                     onClick={() => handleNavigation(link.href)}
@@ -77,12 +80,16 @@ export function Navbar() {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="text-gray-300 hover:text-[#D4AF37] transition-colors duration-300 text-sm font-medium tracking-wide"
+                    className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
+                      isActive
+                        ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]'
+                        : 'text-gray-300 hover:text-[#D4AF37]'
+                    }`}
                   >
                     {link.name}
                   </Link>
-                ),
-              )}
+                )
+              })}
               <button
                 onClick={() => handleNavigation('/#contact')}
                 className="px-6 py-2.5 bg-gradient-to-r from-[#D4AF37] to-[#C9A227] text-[#0B0B0B] font-semibold text-sm rounded-lg hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all duration-300"
@@ -113,8 +120,10 @@ export function Navbar() {
             className="fixed inset-0 z-40 bg-[#0B0B0B]/98 backdrop-blur-lg md:hidden pt-24"
           >
             <div className="flex flex-col items-center gap-6 p-8">
-              {navLinks.map((link, index) =>
-                link.href.startsWith('/#') ? (
+              {navLinks.map((link, index) => {
+                const isActive =
+                  !link.href.startsWith('/#') && location.pathname === link.href
+                return link.href.startsWith('/#') ? (
                   <motion.button
                     key={link.name}
                     initial={{ opacity: 0, y: 20 }}
@@ -136,14 +145,18 @@ export function Navbar() {
                     <Link
                       to={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-2xl text-white hover:text-[#D4AF37] transition-colors duration-300"
+                      className={`text-2xl transition-colors duration-300 ${
+                        isActive
+                          ? 'text-[#D4AF37]'
+                          : 'text-white hover:text-[#D4AF37]'
+                      }`}
                       style={{ fontFamily: "'Playfair Display', serif" }}
                     >
                       {link.name}
                     </Link>
                   </motion.div>
-                ),
-              )}
+                )
+              })}
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

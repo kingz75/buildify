@@ -14,6 +14,7 @@ import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as PublicServicesRouteImport } from './routes/_public/services'
+import { Route as PublicPriceRouteImport } from './routes/_public/price'
 import { Route as PublicPortfolioRouteImport } from './routes/_public/portfolio'
 import { Route as PublicAboutRouteImport } from './routes/_public/about'
 import { Route as ProtectedExampleProtectedRouteRouteImport } from './routes/_protected/example-protected-route'
@@ -45,6 +46,11 @@ const PublicIndexRoute = PublicIndexRouteImport.update({
 const PublicServicesRoute = PublicServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => PublicRoute,
+} as any)
+const PublicPriceRoute = PublicPriceRouteImport.update({
+  id: '/price',
+  path: '/price',
   getParentRoute: () => PublicRoute,
 } as any)
 const PublicPortfolioRoute = PublicPortfolioRouteImport.update({
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/about': typeof PublicAboutRoute
   '/portfolio': typeof PublicPortfolioRoute
+  '/price': typeof PublicPriceRoute
   '/services': typeof PublicServicesRoute
 }
 export interface FileRoutesByTo {
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/about': typeof PublicAboutRoute
   '/portfolio': typeof PublicPortfolioRoute
+  '/price': typeof PublicPriceRoute
   '/services': typeof PublicServicesRoute
 }
 export interface FileRoutesById {
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/_protected/example-protected-route': typeof ProtectedExampleProtectedRouteRoute
   '/_public/about': typeof PublicAboutRoute
   '/_public/portfolio': typeof PublicPortfolioRoute
+  '/_public/price': typeof PublicPriceRoute
   '/_public/services': typeof PublicServicesRoute
   '/_public/': typeof PublicIndexRoute
 }
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/example-protected-route'
     | '/about'
     | '/portfolio'
+    | '/price'
     | '/services'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -173,6 +183,7 @@ export interface FileRouteTypes {
     | '/example-protected-route'
     | '/about'
     | '/portfolio'
+    | '/price'
     | '/services'
   id:
     | '__root__'
@@ -189,6 +200,7 @@ export interface FileRouteTypes {
     | '/_protected/example-protected-route'
     | '/_public/about'
     | '/_public/portfolio'
+    | '/_public/price'
     | '/_public/services'
     | '/_public/'
   fileRoutesById: FileRoutesById
@@ -236,6 +248,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof PublicServicesRouteImport
+      parentRoute: typeof PublicRoute
+    }
+    '/_public/price': {
+      id: '/_public/price'
+      path: '/price'
+      fullPath: '/price'
+      preLoaderRoute: typeof PublicPriceRouteImport
       parentRoute: typeof PublicRoute
     }
     '/_public/portfolio': {
@@ -344,6 +363,7 @@ const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
 interface PublicRouteChildren {
   PublicAboutRoute: typeof PublicAboutRoute
   PublicPortfolioRoute: typeof PublicPortfolioRoute
+  PublicPriceRoute: typeof PublicPriceRoute
   PublicServicesRoute: typeof PublicServicesRoute
   PublicIndexRoute: typeof PublicIndexRoute
 }
@@ -351,6 +371,7 @@ interface PublicRouteChildren {
 const PublicRouteChildren: PublicRouteChildren = {
   PublicAboutRoute: PublicAboutRoute,
   PublicPortfolioRoute: PublicPortfolioRoute,
+  PublicPriceRoute: PublicPriceRoute,
   PublicServicesRoute: PublicServicesRoute,
   PublicIndexRoute: PublicIndexRoute,
 }

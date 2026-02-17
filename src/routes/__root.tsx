@@ -8,6 +8,7 @@ import appCss from '../styles.css?url'
 import type { QueryClient } from '@tanstack/react-query'
 import { Toaster } from '@/components/ui/sonner'
 import { ThemeProvider } from 'next-themes'
+import { ScrollToTop } from '@/components/scroll-to-top'
 import { authMiddleware } from '@/server/functions/auth'
 import { getBaseUrl } from '@/server/functions/request'
 import {
@@ -123,6 +124,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           enableSystem={false}
           disableTransitionOnChange
         >
+          <ScrollToTop />
           {children}
           <Toaster />
         </ThemeProvider>
