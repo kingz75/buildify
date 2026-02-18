@@ -17,8 +17,8 @@ interface Package {
 const packages: Package[] = [
   {
     title: 'Starter Package',
-    oldPrice: '₦350,000 - ₦450,000',
-    newPrice: '₦250,000 - ₦350,000',
+    oldPrice: '₦250,000 - ₦450,000',
+    newPrice: '₦150,000 - ₦350,000',
     subtitle: 'Perfect for small businesses or personal brands.',
     features: [
       '1 - 5 pages custom website',
@@ -32,28 +32,28 @@ const packages: Package[] = [
     ],
   },
   {
-    title: 'Business Package',
-    oldPrice: '₦500,000 - ₦600,000',
-    newPrice: '₦400,000 – ₦500,000',
-    subtitle: 'For growing businesses and service-based companies.',
+    title: "E-Commerce Package",
+    oldPrice: "₦700,000 - ₦900,000",
+    newPrice: "₦600,000 - ₦800,000",
+    subtitle: "For businesses selling online.",
     features: [
-      '5 to 10 pages',
-      'UI/UX design customization',
-      'Blog or portfolio section',
-      'SEO optimization',
-      'Contact form with email notification',
-      'Social media integration',
-      'WhatsApp integration',
-      'Analytics setup',
-      '2 revisions',
-      'Delivery: 10–14 working days',
+      "Product listings (up to 50)",
+      "UI/UX design customization",
+      "Admin dashboard",
+      "Inventory management",
+      "Shopping cart & payment gateway",
+      "Order tracking system",
+      "Training session for usage",
+      "Delivery: 10-15 working days",
     ],
-    popular: true,
+     popular: true,
   },
+  
+  
   {
     title: 'Enterprise Package',
-    oldPrice: '₦800,000 - ₦1,200,000',
-    newPrice: '₦700,000 - ₦1,000,000',
+    oldPrice: '₦900,000 ',
+    newPrice: '₦800,000 - ₦1m+',
     subtitle: 'For large businesses and complex requirements.',
     features: [
       'Unlimited pages',
@@ -163,7 +163,7 @@ export default function PricePage() {
                 </ul>
 
                 <a
-                  href="/#contact"
+                  href="https://wa.me/2349077876166"
                   className={`block w-full py-3 text-center font-semibold rounded-lg transition-all ${
                     pkg.popular
                       ? 'bg-[#D4AF37] text-[#0B0B0B] hover:shadow-lg hover:shadow-[#D4AF37]/25'

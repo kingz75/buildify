@@ -8,7 +8,7 @@ const testimonials = [
     author: 'Team',
     role: 'Green World AgroTrade ',
     avatar:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+      'https://ui-avatars.com/api/?name=Green+World&background=D4AF37&color=fff&size=100&font-size=0.4&bold=true',
     rating: 5,
   },
   {
@@ -17,7 +17,7 @@ const testimonials = [
     author: 'Team',
     role: 'Cozym LMT',
     avatar:
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+      'https://ui-avatars.com/api/?name=Cozym&background=1a1a1a&color=fff&size=100&font-size=0.4&bold=true',
     rating: 5,
   },
   {
@@ -26,7 +26,7 @@ const testimonials = [
     author: 'Team',
     role: 'Tiamin',
     avatar:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+      'https://ui-avatars.com/api/?name=Tiamin&background=2d2d2d&color=fff&size=100&font-size=0.4&bold=true',
     rating: 5,
   },
 ]

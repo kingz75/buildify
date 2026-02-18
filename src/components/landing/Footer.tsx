@@ -78,7 +78,7 @@ export function Footer() {
       </motion.button>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 ">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
@@ -105,7 +105,7 @@ export function Footer() {
           </div>
 
           {/* Services Links */}
-          <div>
+          <div className='lg:block hidden'>
             <h4
               className="text-white font-semibold mb-6"
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -127,7 +127,7 @@ export function Footer() {
           </div>
 
           {/* Company Links */}
-          <div>
+          <div className='lg:block hidden'>
             <h4
               className="text-white font-semibold mb-6"
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -158,7 +158,7 @@ export function Footer() {
           </div>
 
           {/* Legal Links */}
-          <div>
+          <div className='lg:block hidden'>
             <h4
               className="text-white font-semibold mb-6"
               style={{ fontFamily: "'Playfair Display', serif" }}

@@ -45,8 +45,8 @@ const values = [
 ]
 
 const stats = [
-  { value: '150+', label: 'Projects Delivered' },
-  { value: '50+', label: 'Happy Clients' },
+  { value: '30+', label: 'Projects Delivered' },
+  { value: '20+', label: 'Happy Clients' },
   { value: '5+', label: 'Years Experience' },
   { value: '24/7', label: 'Support' },
 ]
