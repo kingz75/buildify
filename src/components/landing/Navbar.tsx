@@ -1,8 +1,10 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
-import { Link, useLocation } from '@tanstack/react-router'
-import main from '/mainlogo.svg'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -17,7 +19,7 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const location = useLocation()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,7 @@ export function Navbar() {
     // Handle hash links on home page
     if (href.startsWith('/#')) {
       const hash = href.substring(2)
-      if (location.pathname === '/') {
+      if (pathname === '/') {
         const element = document.querySelector(`#${hash}`)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
@@ -59,15 +61,15 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="">
-              <img src={main} alt="" className="h-16" />
+            <Link href="/" className="">
+              <img src="/mainlogo.svg" alt="" className="h-16" />
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => {
                 const isActive =
-                  !link.href.startsWith('/#') && location.pathname === link.href
+                  !link.href.startsWith('/#') && pathname === link.href
                 return link.href.startsWith('/#') ? (
                   <button
                     key={link.name}
@@ -79,7 +81,7 @@ export function Navbar() {
                 ) : (
                   <Link
                     key={link.name}
-                    to={link.href}
+                    href={link.href}
                     className={`text-sm font-medium tracking-wide transition-colors duration-300 ${
                       isActive
                         ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]'
@@ -122,7 +124,7 @@ export function Navbar() {
             <div className="flex flex-col items-center gap-6 p-8">
               {navLinks.map((link, index) => {
                 const isActive =
-                  !link.href.startsWith('/#') && location.pathname === link.href
+                  !link.href.startsWith('/#') && pathname === link.href
                 return link.href.startsWith('/#') ? (
                   <motion.button
                     key={link.name}
@@ -143,7 +145,7 @@ export function Navbar() {
                     transition={{ delay: index * 0.1 }}
                   >
                     <Link
-                      to={link.href}
+                      href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`text-2xl transition-colors duration-300 ${
                         isActive

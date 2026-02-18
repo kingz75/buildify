@@ -1,11 +1,14 @@
-import { Link, useLocation } from '@tanstack/react-router'
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Button } from './ui/button'
 import { useAuth } from '@/hooks/use-auth'
 
 export function ImaginePlaceholder() {
   const { currentUser, signOut } = useAuth()
-  const location = useLocation()
+  const pathname = usePathname()
   const { theme } = useTheme()
 
   return (
@@ -34,10 +37,7 @@ export function ImaginePlaceholder() {
         <>
           <p className="text-foreground/70">You are not signed in.</p>
           <Link
-            to="/sign-in"
-            search={{
-              redirect: location.pathname,
-            }}
+            href={`/sign-in?redirect=${encodeURIComponent(pathname)}`}
             className="text-blue-500 underline"
           >
             <Button size="sm">Sign in</Button>

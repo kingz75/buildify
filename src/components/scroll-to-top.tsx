@@ -1,5 +1,7 @@
+'use client'
+
 import { useEffect } from 'react'
-import { useLocation } from '@tanstack/react-router'
+import { usePathname } from 'next/navigation'
 
 /**
  * ScrollToTop component that scrolls the window to the top
@@ -7,7 +9,7 @@ import { useLocation } from '@tanstack/react-router'
  * navigation starts from the beginning of the page.
  */
 export function ScrollToTop() {
-  const { pathname } = useLocation()
+  const pathname = usePathname()
 
   useEffect(() => {
     window.scrollTo(0, 0)

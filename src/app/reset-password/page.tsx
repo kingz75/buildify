@@ -1,20 +1,22 @@
 'use client'
 
-import { useActionState, useState, useSearchParams } from 'react'
+import { useActionState, useState, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { resetPassword } from '@/app/actions/auth'
+import { resetPassword, type FormState } from '@/app/actions/auth'
 import { AuthCard } from '@/components/auth/auth-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 
-const initialState = {
+const initialState: FormState = {
   message: '',
   success: false,
+  status: undefined,
 }
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const searchParams = useSearchParams()
   const userId = searchParams.get('userId')
   const secret = searchParams.get('secret')
@@ -131,5 +133,26 @@ export default function ResetPasswordPage() {
         </Link>
       </div>
     </AuthCard>
+  )
+}
+
+function LoadingState() {
+  return (
+    <AuthCard
+      title="Loading..."
+      description="Please wait while we process your request"
+    >
+      <div className="flex justify-center py-4">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    </AuthCard>
+  )
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <ResetPasswordForm />
+    </Suspense>
   )
 }

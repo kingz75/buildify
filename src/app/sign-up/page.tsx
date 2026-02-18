@@ -2,20 +2,15 @@
 
 import { useActionState } from 'react'
 import Link from 'next/link'
-import { signUp } from '@/app/actions/auth'
+import { signUp, type FormState } from '@/app/actions/auth'
 import { AuthCard } from '@/components/auth/auth-card'
 import { AuthForm } from '@/components/auth/auth-form'
 import { AuthField } from '@/components/auth/auth-field'
-import { z } from 'zod'
 
-const signUpSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(8, 'Password must be at least 8 characters'),
-})
-
-const initialState = {
+const initialState: FormState = {
   message: '',
   errors: undefined,
+  status: undefined,
 }
 
 export default function SignUpPage() {
@@ -27,36 +22,24 @@ export default function SignUpPage() {
       description="Enter your details to create a new account"
     >
       <AuthForm
-        schema={signUpSchema}
-        defaultValues={{
-          email: '',
-          password: '',
-        }}
         action={formAction}
         submitText="Sign up"
         loadingText="Signing up..."
         isLoading={isPending}
-        errorMessage={state?.message}
       >
-        {(form) => (
-          <>
-            <AuthField
-              control={form.control}
-              name="email"
-              label="Email"
-              placeholder="john@doe.com"
-              type="email"
-            />
+        <AuthField
+          name="email"
+          label="Email"
+          placeholder="john@doe.com"
+          type="email"
+        />
 
-            <AuthField
-              control={form.control}
-              name="password"
-              label="Password"
-              placeholder="Enter your password"
-              type="password"
-            />
-          </>
-        )}
+        <AuthField
+          name="password"
+          label="Password"
+          placeholder="Enter your password"
+          type="password"
+        />
       </AuthForm>
 
       <div className="text-center text-sm text-muted-foreground mt-4 space-x-1">

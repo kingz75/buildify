@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { createAdminClient, createSessionClient } from '@/server/lib/appwrite'
+import { createAdminClient, createSessionClient } from '@/lib/appwrite'
 import { AppwriteException, ID } from 'node-appwrite'
 import z from 'zod'
 
@@ -29,7 +29,24 @@ const signUpInSchema = z.object({
   redirect: z.string().optional(),
 })
 
-export async function signUp(prevState: unknown, formData: FormData) {
+// Type for form state
+export type FormState =
+  | {
+      message: string
+      errors?: {
+        email?: string[]
+        password?: string[]
+        redirect?: string[]
+      }
+      status?: number
+      success?: boolean
+    }
+  | undefined
+
+export async function signUp(
+  prevState: FormState,
+  formData: FormData,
+): Promise<FormState> {
   const rawData = {
     email: formData.get('email'),
     password: formData.get('password'),
@@ -95,7 +112,10 @@ export async function signUp(prevState: unknown, formData: FormData) {
   }
 }
 
-export async function signIn(prevState: unknown, formData: FormData) {
+export async function signIn(
+  prevState: FormState,
+  formData: FormData,
+): Promise<FormState> {
   const rawData = {
     email: formData.get('email'),
     password: formData.get('password'),
@@ -207,7 +227,10 @@ const forgotPasswordSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
 })
 
-export async function forgotPassword(prevState: unknown, formData: FormData) {
+export async function forgotPassword(
+  prevState: FormState,
+  formData: FormData,
+): Promise<FormState> {
   const rawData = {
     email: formData.get('email'),
   }
@@ -248,7 +271,10 @@ const resetPasswordSchema = z.object({
   confirmPassword: z.string().min(8, 'Password must be at least 8 characters'),
 })
 
-export async function resetPassword(prevState: unknown, formData: FormData) {
+export async function resetPassword(
+  prevState: FormState,
+  formData: FormData,
+): Promise<FormState> {
   const rawData = {
     userId: formData.get('userId'),
     secret: formData.get('secret'),

@@ -1,52 +1,33 @@
-import { Control, FieldPath, FieldValues } from 'react-hook-form'
-import {
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+import * as React from 'react'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
-interface AuthFieldProps<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> {
-  control: Control<TFieldValues>
-  name: TName
+interface AuthFieldProps {
+  name: string
   label: string
   placeholder: string
   type?: string
 }
 
-export function AuthField<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({
-  control,
+export function AuthField({
   name,
   label,
   placeholder,
   type = 'text',
-}: AuthFieldProps<TFieldValues, TName>) {
+}: AuthFieldProps) {
   return (
-    <FormField
-      control={control}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel className="text-sm md:text-base">{label}</FormLabel>
-          <FormControl>
-            <Input
-              className="text-sm md:text-base h-8 md:h-9"
-              type={type}
-              placeholder={placeholder}
-              {...field}
-            />
-          </FormControl>
-          <FormMessage className="text-xs md:text-sm" />
-        </FormItem>
-      )}
-    />
+    <div className="space-y-2">
+      <Label htmlFor={name} className="text-sm md:text-base">
+        {label}
+      </Label>
+      <Input
+        id={name}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        className="text-sm md:text-base h-8 md:h-9"
+        required
+      />
+    </div>
   )
 }

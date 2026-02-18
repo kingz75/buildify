@@ -1,9 +1,10 @@
+'use client'
+
 import { motion } from 'motion/react'
 import { Github, Linkedin, ArrowUp } from 'lucide-react'
-import { Link, useLocation } from '@tanstack/react-router'
-import main from "/mainlogo.svg";
-import { FaXTwitter } from "react-icons/fa6";
-import { FiFacebook } from "react-icons/fi";
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { FaXTwitter, FaFacebook } from 'react-icons/fa6'
 
 const footerLinks = {
   services: [
@@ -26,14 +27,22 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: FiFacebook, href: 'https://www.facebook.com/profile.php?id=61578775401344', label: 'Twitter' },
+  {
+    icon: FaFacebook,
+    href: 'https://www.facebook.com/profile.php?id=61578775401344',
+    label: 'Facebook',
+  },
   { icon: FaXTwitter, href: 'https://x.com/buildifycode', label: 'Twitter' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/buildify-code-98023038a/', label: 'LinkedIn' },
+  {
+    icon: Linkedin,
+    href: 'https://www.linkedin.com/in/buildify-code-98023038a/',
+    label: 'LinkedIn',
+  },
   { icon: Github, href: 'https://github.com/kingz75/', label: 'GitHub' },
 ]
 
 export function Footer() {
-  const location = useLocation()
+  const pathname = usePathname()
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -44,7 +53,7 @@ export function Footer() {
 
     if (href.startsWith('/#')) {
       const hash = href.substring(2)
-      if (location.pathname === '/') {
+      if (pathname === '/') {
         const element = document.querySelector(`#${hash}`)
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' })
@@ -72,8 +81,8 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-6">
-              <img src={main} alt="" className="h-16" />
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <img src="/mainlogo.svg" alt="" className="h-16" />
             </Link>
             <p className="text-gray-500 leading-relaxed mb-6 max-w-sm">
               Premium software development agency crafting digital excellence.
@@ -107,7 +116,7 @@ export function Footer() {
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-gray-500 hover:text-[#D4AF37] transition-colors duration-300 text-sm"
                   >
                     {link.name}
@@ -137,7 +146,7 @@ export function Footer() {
                     </button>
                   ) : (
                     <Link
-                      to={link.href}
+                      href={link.href}
                       className="text-gray-500 hover:text-[#D4AF37] transition-colors duration-300 text-sm"
                     >
                       {link.name}
@@ -178,7 +187,6 @@ export function Footer() {
           </p>
           <p className="text-gray-600 text-sm">
             Crafted <span className="text-[#D4AF37]">♦</span> in Abuja
-            
           </p>
         </div>
       </div>

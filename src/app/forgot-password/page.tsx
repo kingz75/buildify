@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from 'react'
 import Link from 'next/link'
-import { forgotPassword } from '@/app/actions/auth'
+import { forgotPassword, type FormState } from '@/app/actions/auth'
 import { AuthCard } from '@/components/auth/auth-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,9 +10,10 @@ import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { CheckCircle2 } from 'lucide-react'
 
-const initialState = {
+const initialState: FormState = {
   message: '',
   success: false,
+  status: undefined,
 }
 
 export default function ForgotPasswordPage() {

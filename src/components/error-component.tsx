@@ -1,5 +1,7 @@
+'use client'
+
 import { useTheme } from 'next-themes'
-import { useLocation } from '@tanstack/react-router'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 export function ErrorComponent({
@@ -14,13 +16,13 @@ export function ErrorComponent({
     Math.random().toString(36).substring(2, 15),
   )
   const { theme } = useTheme()
-  const location = useLocation()
+  const pathname = usePathname()
 
   const message = {
     type: 'NOTIFY_ERROR',
     data: {
       errorId: randomErrorId.current,
-      href: location.href,
+      href: pathname,
       errorMessage: error.message,
       errorStack: error.stack,
       errorCause: error.cause,
