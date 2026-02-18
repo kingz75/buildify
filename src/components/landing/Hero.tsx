@@ -100,17 +100,17 @@ export function Hero() {
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center  ">
         {/* Badge */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 lg:mt-8 mt-16 "
+          className=" items-center lg:block hidden gap-2 px-4 py-2 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 lg:mt-8 mt-16 "
         >
           <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
           <span className="text-[#D4AF37] text-sm font-medium tracking-wide">
             Premium Software Development
           </span>
-        </motion.div>
+        </motion.div> */}
 
         {/* Headline */}
         <motion.h1

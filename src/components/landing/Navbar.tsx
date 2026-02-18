@@ -62,7 +62,7 @@ export function Navbar() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="">
-              <img src="/mainlogo.svg" alt="" className="h-16" />
+              <img src="/mainlogo.svg" alt="" className="lg:h-16 h-10" />
             </Link>
 
             {/* Desktop Navigation */}
