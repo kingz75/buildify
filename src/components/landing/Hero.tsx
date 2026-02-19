@@ -1,4 +1,5 @@
-import { motion } from 'motion/react'
+import { motion, useInView, useSpring, useTransform } from 'motion/react'
+import { useState, useEffect, useRef } from 'react'
 import { ArrowRight, Code2, Sparkles, Zap } from 'lucide-react'
 
 export function Hero() {
@@ -164,25 +165,24 @@ export function Hero() {
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
         >
           {[
-            { value: '30+', label: 'Projects Delivered' },
-            { value: '20+', label: 'Global Clients' },
-            { value: '5+', label: 'Years Experience' },
-            { value: '99%', label: 'Client Satisfaction' },
+            { value: 30, suffix: '+', label: 'Projects Delivered' },
+            { value: 20, suffix: '+', label: 'Global Clients' },
+            { value: 5, suffix: '+', label: 'Years Experience' },
+            { value: 99, suffix: '%', label: 'Client Satisfaction' },
           ].map((stat, index) => (
-            <div key={index} className="text-center">
-              <div
-                className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F5E6A3] bg-clip-text text-transparent mb-2"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                {stat.value}
-              </div>
-              <div className="text-gray-500 text-sm">{stat.label}</div>
-            </div>
+            <Counter
+              key={index}
+              value={stat.value}
+              suffix={stat.suffix}
+              label={stat.label}
+              index={index}
+            />
           ))}
         </motion.div>
       </div>
@@ -190,5 +190,51 @@ export function Hero() {
       {/* Bottom Gradient Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B0B0B] to-transparent" />
     </section>
+  )
+}
+
+// Counter Component with animated counting
+function Counter({
+  value,
+  suffix,
+  label,
+  index,
+}: {
+  value: number
+  suffix: string
+  label: string
+  index: number
+}) {
+  const [count, setCount] = useState(0)
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const spring = useSpring(0, { duration: 4000, bounce: 0 })
+  const display = useTransform(spring, (latest) => Math.round(latest))
+
+  useEffect(() => {
+    if (isInView) {
+      spring.set(value)
+    }
+  }, [isInView, value, spring])
+
+  useEffect(() => {
+    const unsubscribe = display.on('change', (latest) => {
+      setCount(latest)
+    })
+    return () => unsubscribe()
+  }, [display])
+
+  return (
+    <div ref={ref} className="text-center">
+      <div
+        className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F5E6A3] bg-clip-text text-transparent mb-2"
+        style={{ fontFamily: "'Playfair Display', serif" }}
+      >
+        {count}
+        {suffix}
+      </div>
+      <div className="text-gray-500 text-sm">{label}</div>
+    </div>
   )
 }

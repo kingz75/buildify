@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
+import Image from 'next/image'
 import { Navbar } from '@/components/landing/Navbar'
 import { Footer } from '@/components/landing/Footer'
 import { ExternalLink, Github } from 'lucide-react'
@@ -10,54 +11,79 @@ const categories = ['All', 'Web Apps', 'Mobile', 'E-commerce', 'Enterprise']
 const projects = [
   {
     id: 1,
-    title: 'FinTech Dashboard',
-    category: 'Web Apps',
+    title: 'SufPay',
+    category: 'Fintech',
     description:
-      'Real-time financial analytics platform with advanced data visualization',
-    image: '💰',
-    tags: ['React', 'TypeScript', 'D3.js'],
+      'Sufpay is a real-time financial analytics platform that empowers businesses and individuals with advanced data visualization, actionable insights, and intelligent reporting to make faster, smarter financial decisions.',
+    image: '/image/sufpaym.png',
+    url: 'https://sufpay.ng',
+    tags: ['React', 'TypeScript', 'Node.js'],
   },
   {
     id: 2,
-    title: 'E-Commerce Platform',
+    title: 'Azbirclothing',
     category: 'E-commerce',
-    description: 'Scalable online marketplace with AI-powered recommendations',
-    image: '🛒',
-    tags: ['Next.js', 'Node.js', 'PostgreSQL'],
+    description: 'Azbirclothing is a modern fashion brand delivering stylish, high-quality apparel designed for confidence, comfort, and everyday expression.',
+    image: '/image/clothm.png',
+    url: 'https://azbirclothings.com',
+    tags: ['Next.js', 'Flutter', 'TypeScript'],
   },
   {
     id: 3,
-    title: 'Healthcare App',
-    category: 'Mobile',
+    title: 'Greenworldagrotradtrade',
+    category: 'Agriculture',
     description:
-      'HIPAA-compliant telemedicine platform for remote consultations',
-    image: '🏥',
-    tags: ['React Native', 'Firebase', 'WebRTC'],
+      'Greenworldagrotradtrade is an agro-trading company supplying quality agricultural products locally and internationally.',
+    image: '/image/agrom.png',
+    url: 'https://greenworldagrotrade.com',
+    tags: ['React ', 'Node,js', ''],
   },
   {
     id: 4,
-    title: 'Enterprise CRM',
-    category: 'Enterprise',
-    description: 'Custom CRM solution with advanced automation workflows',
-    image: '🏢',
-    tags: ['Vue.js', 'Python', 'AWS'],
+    title: 'Hamzville',
+    category: 'Cleaning Service',
+    description: 'Hamzville is a dynamic online platform offering quality products and services with a focus on innovation, reliability, and customer satisfaction.',
+    image: '/image/hamzvillem.png',
+    url: 'https://hamzville.com',
+    tags: ['React','TypeScript',''],
   },
   {
     id: 5,
-    title: 'Social Media App',
-    category: 'Mobile',
-    description: 'Feature-rich social platform with real-time messaging',
-    image: '📱',
-    tags: ['Flutter', 'Firebase', 'Socket.io'],
+    title: 'Fortunezakprints',
+    category: 'E-Commerce',
+    description: 'Fortunezakprints is a professional printing service delivering high-quality custom prints with precision, creativity, and fast turnaround times.',
+    image: '/image/fortunzm.png',
+    url: 'https://Fortunezakprints.com',
+    tags: ['React', 'Node.js', ''],
   },
   {
     id: 6,
-    title: 'SaaS Platform',
-    category: 'Web Apps',
-    description: 'Multi-tenant SaaS solution for business management',
-    image: '☁️',
-    tags: ['Next.js', 'PostgreSQL', 'Stripe'],
+    title: 'Zitajautomobile',
+    category: 'Automobile',
+    description: 'Zitajautomobileis a trusted automobile platform offering quality vehicles and reliable automotive services with a focus on performance and customer satisfaction.',
+    image: '/image/zitajm.png',
+    url: 'https://zitajautomobile.com',
+    tags: ['React', 'Node.js', ''],
   },
+  // {
+  //   id: 7,
+  //   title: 'Greenworldagrotradtrade',
+  //   category: 'Agriculture',
+  //   description:
+  //     'HIPAA-compliant telemedicine platform for remote consultations',
+  //   image: '/image/agrom.png',
+  //   url: 'https://greenworldagrotrade.com',
+  //   tags: ['React Native', 'Firebase', 'WebRTC'],
+  // },
+  // {
+  //   id: 8,
+  //   title: 'Bryanaresort',
+  //   category: 'Apartment',
+  //   description: 'Bryanaresort is a relaxing getaway destination offering comfortable accommodations, serene surroundings, and exceptional hospitality for a memorable stay.',
+  //   image: '/image/bryanam.png',
+  //   url: 'https://bryanaresort.com',
+  //   tags: ['Next.js', 'PostgreSQL', 'Stripe'],
+  // },
 ]
 
 export default function PortfolioPage() {
@@ -113,9 +139,14 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group rounded-2xl bg-gradient-to-br from-[#141414] to-[#0B0B0B] border border-[#D4AF37]/10 overflow-hidden hover:border-[#D4AF37]/30 transition-all duration-300"
               >
-                {/* Image Placeholder */}
-                <div className="h-48 bg-[#1A1A1A] flex items-center justify-center text-6xl">
-                  {project.image}
+                {/* Project Image */}
+                <div className="h-48 relative bg-[#1A1A1A] overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
                 <div className="p-6">
@@ -142,7 +173,9 @@ export default function PortfolioPage() {
 
                   <div className="flex gap-3">
                     <a
-                      href="#"
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-1 text-sm text-[#D4AF37] hover:underline"
                     >
                       <ExternalLink className="w-4 h-4" />

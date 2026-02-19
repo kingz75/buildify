@@ -17,8 +17,8 @@ interface Package {
 const packages: Package[] = [
   {
     title: 'Starter Package',
-    oldPrice: '₦250,000 - ₦450,000',
-    newPrice: '₦150,000 - ₦350,000',
+    oldPrice: '₦250,000 - ₦500,000',
+    newPrice: '₦150,000 - ₦400,000',
     subtitle: 'Perfect for small businesses or personal brands.',
     features: [
       '1 - 5 pages custom website',
@@ -53,7 +53,7 @@ const packages: Package[] = [
   {
     title: 'Enterprise Package',
     oldPrice: '₦900,000 ',
-    newPrice: '₦800,000 - ₦1m+',
+    newPrice: '₦800,000+ ',
     subtitle: 'For large businesses and complex requirements.',
     features: [
       'Unlimited pages',
