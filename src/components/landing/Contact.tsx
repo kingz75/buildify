@@ -27,20 +27,31 @@ export function Contact() {
 
   // EmailJS configuration - Replace these with your actual credentials from EmailJS dashboard
   const EMAILJS_PUBLIC_KEY =
-    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'L2M0lBn79hjMs2xdc'
   const EMAILJS_SERVICE_ID =
-    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_e2zc5i9'
   const EMAILJS_TEMPLATE_ID =
-    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID'
+    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_9haz7df'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
 
+    console.log('=== FORM SUBMISSION DEBUG ===')
+    console.log('Full formState:', JSON.stringify(formState, null, 2))
+    console.log('name:', formState.name)
+    console.log('email:', formState.email)
+    console.log('company:', formState.company)
+    console.log('budget:', formState.budget)
+    console.log('message:', formState.message)
+    console.log('================================')
+
     try {
+      console.log('Form data being sent to EmailJS:', formState)
+
       // Send form data using EmailJS
-      await emailjs.send(
+      const result = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
@@ -52,6 +63,7 @@ export function Contact() {
         },
         EMAILJS_PUBLIC_KEY,
       )
+      console.log('EmailJS result:', result)
 
       setIsSubmitted(true)
       setTimeout(() => {

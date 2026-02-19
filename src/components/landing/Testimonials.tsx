@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { motion } from 'motion/react'
-import { Quote, Star } from 'lucide-react'
+import { Quote, Star, ChevronDown, ChevronUp } from 'lucide-react'
 
 const testimonials = [
   {
@@ -8,7 +9,7 @@ const testimonials = [
     author: 'Team',
     role: 'Green World AgroTrade ',
     avatar:
-      'https://ui-avatars.com/api/?name=Green+World&background=D4AF37&color=fff&size=100&font-size=0.4&bold=true',
+      'https://ui-avatars.com/api/?name=Green+World&background=2d2d2d&color=fff&size=100&font-size=0.4&bold=true',
     rating: 5,
   },
   {
@@ -32,6 +33,16 @@ const testimonials = [
 ]
 
 export function Testimonials() {
+  const [expandedQuotes, setExpandedQuotes] = useState<Record<number, boolean>>(
+    {},
+  )
+
+  const toggleQuote = (index: number) => {
+    setExpandedQuotes((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }))
+  }
   return (
     <section
       id="testimonials"
@@ -102,9 +113,33 @@ export function Testimonials() {
                   </div>
 
                   {/* Quote */}
-                  <p className="text-gray-300 leading-relaxed mb-8 italic">
-                    "{testimonial.quote}"
-                  </p>
+                  <div className="mb-6">
+                    <p
+                      className={`text-gray-300 leading-relaxed italic ${
+                        !expandedQuotes[index] ? 'line-clamp-8' : ''
+                      }`}
+                    >
+                      "{testimonial.quote}"
+                    </p>
+                    {testimonial.quote.length > 200 && (
+                      <button
+                        onClick={() => toggleQuote(index)}
+                        className="text-[#D4AF37] text-sm font-medium hover:text-[#E5C14D] transition-colors mt-2 flex items-center gap-1"
+                      >
+                        {expandedQuotes[index] ? (
+                          <>
+                            <ChevronUp className="w-4 h-4" />
+                            Read less
+                          </>
+                        ) : (
+                          <>
+                            <ChevronDown className="w-4 h-4" />
+                            Read more
+                          </>
+                        )}
+                      </button>
+                    )}
+                  </div>
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
