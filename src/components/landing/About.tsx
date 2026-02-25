@@ -94,7 +94,7 @@ export function About() {
 
             {/* CTA */}
             <a
-              href="/"
+              href="/about"
               className="inline-flex items-center gap-2 px-6 py-3 border border-[#D4AF37]/50 text-[#D4AF37] font-semibold rounded-lg hover:bg-[#D4AF37]/10 transition-all duration-300"
             >
               Learn More About Us

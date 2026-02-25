@@ -167,7 +167,7 @@ export function Portfolio() {
           className="text-center mt-12"
         >
           <a
-            href="/"
+            href="/portfolio"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#D4AF37] to-[#C9A227] text-[#0B0B0B] font-semibold rounded-xl hover:shadow-2xl hover:shadow-[#D4AF37]/30 transition-all duration-300"
           >
             View All Projects
