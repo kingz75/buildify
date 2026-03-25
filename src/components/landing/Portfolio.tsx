@@ -6,7 +6,7 @@ const projects = [
     title: 'FinanceFlow Pro',
     category: 'Fintech Platform',
     description:
-      'A comprehensive financial management platform serving 50,000+ users with real-time analytics and AI-powered insights.',
+      'A comprehensive financial management platform serving 50,000+ users with real-time analytics and AI powered insights.',
     image:
       'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
     tags: ['React', 'Node.js', 'AI/ML', 'AWS'],

@@ -86,7 +86,7 @@ export function Footer() {
             </Link>
             <p className="text-gray-500 leading-relaxed mb-6 max-w-sm">
               Premium software development agency crafting digital excellence.
-              We transform visions into world-class products.
+              We transform visions into world class products.
             </p>
 
             {/* Social Links */}

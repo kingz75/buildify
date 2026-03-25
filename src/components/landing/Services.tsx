@@ -81,7 +81,7 @@ export function Services() {
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             End-to-end digital solutions crafted with precision. We transform
-            complex challenges into elegant, high-performance products.
+            complex challenges into elegant, high performance products.
           </p>
         </motion.div>
 

@@ -41,10 +41,26 @@ export function Navbar() {
           element.scrollIntoView({ behavior: 'smooth' })
         }
       } else {
-        window.location.href = href
+        // Navigate to home page with hash - use replace to avoid history stack issues
+        window.location.replace(href)
       }
     }
   }
+
+  // Handle hash navigation on initial page load
+  useEffect(() => {
+    if (pathname === '/' && window.location.hash) {
+      const hash = window.location.hash.substring(1)
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(`#${hash}`)
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      }
+    }
+  }, [pathname])
 
   return (
     <>
